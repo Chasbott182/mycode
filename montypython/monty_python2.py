@@ -10,6 +10,7 @@ while round < 3 and answer != "Brian":
         print("Correct!")
     elif answer == "Shrubbery":
         print("You gave the super secret answer!")
+        break
     elif round == 3:    # logic to ensure round has not yet reached 3
         print("Sorry, the answer was Brian.")
     else:                 # if answer was wrong
