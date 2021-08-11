@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import argparse
 marvelchars = {
 "Starlord":
   {"real name": "peter quill",
@@ -21,11 +21,19 @@ value = "Stat does not exist."
 
 #while value == "Stat does not exist.":
 
-char_name = input(" Which character do you want to know about? (Starlord, Mystique, She-Hulk):")
+user = argparse.ArgumentParser(description="Which character")
 
-char_stat = input("  What statistic do you want to know about? (real name, powers, archenemy):")
+acc_adj=["Starlord", "Mystique", "She-Hulk"]
 
-name = marvelchars.get(char_name.lower(),"Name does not exist.")
-value = name.get(char_stat.lower(),"Stat does not exist.")
+user.add_argument("adj", choices=acc_adj, help="Which character")
+# add an optional argument
+user.add_argument("-a", metavar="ADVERB", default="so", help="What statistic")
 
-print( f"{name}'s {char_stat} is: {value}")
+# char_name = input(" Which character do you want to know about? (Starlord, Mystique, She-Hulk):")
+#
+# char_stat = input("  What statistic do you want to know about? (real name, powers, archenemy):")
+
+name = marvelchars.get(user,"Name does not exist.")
+value = name.get(user,"Stat does not exist.")
+
+print( f"{name}'s {user} is: {value}")
