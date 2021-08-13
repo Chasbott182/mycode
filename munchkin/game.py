@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import random
-import threading
 import carddeck
 import player
 import json
@@ -8,11 +7,6 @@ from random import randint
 
 
 
-# while player <= 1:
-#     print("You must enter 2 or players to start game.")
-#     players = input("How many players do you want?: ")
-
-# for x in range(1, players):
 player1 = player.Player()
 
 dungeondeck = carddeck.dungeoncard
@@ -21,6 +15,7 @@ treasuredeck = carddeck.treasurecard
 random.shuffle(dungeondeck)
 random.shuffle(treasuredeck)
 
+#add dungeon cards to players deck
 count = 0
 for i, card in enumerate(dungeondeck):
     if count == 3:
@@ -29,6 +24,7 @@ for i, card in enumerate(dungeondeck):
     dungeondeck.pop(i)
     count += 1
 
+#add treasure cards to players deck
 count = 0
 for i, card in enumerate(treasuredeck):
     if count == 2:
@@ -40,7 +36,7 @@ for i, card in enumerate(treasuredeck):
 
 trashdeck = []
 
-
+# Print the status of the player
 def status():
     print('---------------------------')
     print("Player Level:", player1.level)
@@ -49,17 +45,17 @@ def status():
     print("Cards in Play:", json.dumps(player1.cardsinplay, indent=4))
     print('---------------------------')
 
-
+# This is for when the player fights a monster or finds and empty room.
 def opendoor():
     length = len(dungeondeck)
     current_card = dungeondeck[randint(0, length-1)]
     drawcard(current_card)
 
-    if current_card["name"] in dungeonname:
+    if current_card["name"] in dungeonname:  # if card is in the list of empty door cards
         print("You found an empty dungeon. This will be added to your hand.")
         player1.cards.append(current_card)
         current_card = ""
-        if input("Do you want to play a monster card?").strip() == "yes":
+        if input("Do you want to play a monster card?").strip() == "yes":  # since door is empty you can play a monster card
             resp = input("which card?")
             for i in range(len(player1.cards)):
                 if player1.cards[i]['name'] == resp:
@@ -93,7 +89,6 @@ def opendoor():
                     player1.cardsinplay = []
                     trashdeck.insert(0, current_card)
                 elif current_card.get("bad stuff") == "lose a level":
-
                     player1.level -= 1
 
         elif current_card.get("bad stuff") == "death":
@@ -104,7 +99,7 @@ def opendoor():
         elif current_card.get("bad stuff") == "lose a level":
             player1.level -= 1
 
-
+# shows the card drawn for the deck
 def drawcard(drawncard):
     print('---------------------------')
     print("Name:", drawncard.get("name"))
@@ -113,7 +108,7 @@ def drawcard(drawncard):
     print("Bad Stuff:", drawncard.get("bad stuff"))
     print('---------------------------')
 
-
+# equip items from your deck
 def equip():
 
     aswr = input("do you have any cards you want to equip?")
@@ -129,7 +124,7 @@ def equip():
 
     return
 
-
+# play monster from your deck
 def playmonster(wandering):
 
     if wandering.get("level") <= (player1.level + player1.bonus):
@@ -166,13 +161,23 @@ def playmonster(wandering):
         elif wandering.get("bad stuff") == "lose a level":
             player1.level -= 1
 
-
+# main
 def main():
+
+    print("Welcome to Munchkin!\n")
+    print("Game Rules:")
+    print("You can equip treasure card for bonus points")
+    print("You open dungeon doors to find a random monster or item")
+    print("If you can't beat the monster the bad stuff happens")
+    print("When player reaches level 10 you won the game")
 
     while True:
         status()
         equip()
         opendoor()
+        if player1.level == 10:
+            print("You won the game.")
+            break
 
 
 if __name__ == "__main__":

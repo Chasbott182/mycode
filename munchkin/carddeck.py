@@ -8,7 +8,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "goblin of soul",
         "level": 1,
-        "description": "",
+        "description": "He has soul but he wants yours.",
         "treasure": 1,
         "bad stuff": "lose a level"
 
@@ -17,7 +17,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "trash compactor",
         "level": 2,
-        "description": "",
+        "description": "It's a trash compactor, duh.",
         "treasure": 1,
         "bad stuff": "lose a level"
     },
@@ -25,7 +25,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "An orc reading",
         "level": 3,
-        "description": "",
+        "description": "He's not threatening but he's boring",
         "treasure": 1,
         "bad stuff": "lose a level"
     },
@@ -33,7 +33,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "emo elf",
         "level": 4,
-        "description": "",
+        "description": "Very dramatic, I think he's listening to the black parade",
         "treasure": 1,
         "bad stuff": "lose a card"
     },
@@ -41,7 +41,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "pizza the hut",
         "level": 5,
-        "description": "",
+        "description": "He'll eat you unless you eat him first",
         "treasure": 2,
         "bad stuff": "death"
     },
@@ -49,7 +49,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "kim kardashian",
         "level": 6,
-        "description": "",
+        "description": "You can't keep up with her.",
         "treasure": 2,
         "bad stuff": "death"
     },
@@ -57,7 +57,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "smug",
         "level": 7,
-        "description": "",
+        "description": "The lesser brother of smaug.",
         "treasure": 3,
         "bad stuff": "lose your gear"
     },
@@ -65,7 +65,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "chadwik the bringer of good",
         "level": 1,
-        "description": "",
+        "description": "He's a good guy but not to you.",
         "treasure": 1,
         "bad stuff": ""
 
@@ -74,7 +74,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "garbage can",
         "level": 2,
-        "description": "",
+        "description": "It's a trash can",
         "treasure": 1,
         "bad stuff": "lose a level"
     },
@@ -82,7 +82,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "rick flare",
         "level": 3,
-        "description": "",
+        "description": "WOOOOOO!",
         "treasure": 1,
         "bad stuff": "lose a level"
     },
@@ -90,7 +90,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "carson wentz",
         "level": 4,
-        "description": "",
+        "description": "Careful he want's to play for your team.",
         "treasure": 1,
         "bad stuff": "lose a card"
     },
@@ -98,7 +98,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "little cezar",
         "level": 5,
-        "description": "",
+        "description": "Pizza pizza.",
         "treasure": 2,
         "bad stuff": "death"
     },
@@ -106,7 +106,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "kloe kardashian",
         "level": 6,
-        "description": "",
+        "description": "The sister of kim. Enough said.",
         "treasure": 2,
         "bad stuff": "death"
     },
@@ -114,7 +114,7 @@ dungeoncard = [
         "type": "dungeon",
         "name": "foot",
         "level": 7,
-        "description": "",
+        "description": "It's a giant foot.",
         "treasure": 3,
         "bad stuff": "lose your gear"
     },
@@ -132,7 +132,7 @@ dungeoncard = [
         "level": 0,
         "description": "",
         "treasure": 0,
-        "bad stuff": "your cursed"
+        "bad stuff": "you have class"
     },
     {
         "type": "dungeon",
@@ -156,7 +156,7 @@ dungeoncard = [
         "level": 0,
         "description": "",
         "treasure": 0,
-        "bad stuff": "your cursed"
+        "bad stuff": "you have class"
     },
     {
         "type": "dungeon",
