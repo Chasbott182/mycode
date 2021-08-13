@@ -3,6 +3,7 @@ import random
 import carddeck
 import player
 import json
+import time
 from random import randint
 
 
@@ -36,14 +37,18 @@ for i, card in enumerate(treasuredeck):
 
 trashdeck = []
 
+
 # Print the status of the player
 def status():
     print('---------------------------')
     print("Player Level:", player1.level)
     print("Bonus Points:", player1.bonus)
+    time.sleep(2)
     print("Cards in Hand:", json.dumps(player1.cards, indent=4))
     print("Cards in Play:", json.dumps(player1.cardsinplay, indent=4))
     print('---------------------------')
+    time.sleep(3)
+
 
 # This is for when the player fights a monster or finds and empty room.
 def opendoor():
@@ -55,7 +60,7 @@ def opendoor():
         print("You found an empty dungeon. This will be added to your hand.")
         player1.cards.append(current_card)
         current_card = ""
-        if input("Do you want to play a monster card?").strip() == "yes":  # since door is empty you can play a monster card
+        if input("Do you want to play a monster card?: ").strip() == "yes":  # since door is empty you can play a monster card
             resp = input("which card?")
             for i in range(len(player1.cards)):
                 if player1.cards[i]['name'] == resp:
@@ -75,12 +80,14 @@ def opendoor():
 
     elif current_card.get("level") >= (player1.level + player1.bonus):
         print("OH NO! The monster is to strong.")
-        resp = input("Do you want to run away").strip()
+        resp = input("Do you want to run away?: ").strip()
         if resp == "yes":
             diceroll = randint(1, 6)
             print("You rolled:", diceroll)
+            time.sleep(2)
             if diceroll == 5 or diceroll == 6:
                 print("You escaped!")
+                status(2)
             else:
                 if current_card.get("bad stuff") == "death":
                     print("You died!")
@@ -88,6 +95,8 @@ def opendoor():
                     player1.bonus = 0
                     player1.cardsinplay = []
                     trashdeck.insert(0, current_card)
+                    status()
+                    time.sleep(2)
                 elif current_card.get("bad stuff") == "lose a level":
                     player1.level -= 1
 
@@ -99,6 +108,7 @@ def opendoor():
         elif current_card.get("bad stuff") == "lose a level":
             player1.level -= 1
 
+
 # shows the card drawn for the deck
 def drawcard(drawncard):
     print('---------------------------')
@@ -108,12 +118,13 @@ def drawcard(drawncard):
     print("Bad Stuff:", drawncard.get("bad stuff"))
     print('---------------------------')
 
+
 # equip items from your deck
 def equip():
 
-    aswr = input("do you have any cards you want to equip?")
+    aswr = input("do you have any cards you want to equip? ")
     if aswr == "yes":
-        resp = input("which card?")
+        resp = input("which card? ")
         for i in range(len(player1.cards)):
             if player1.cards[i]["name"] == resp:
                 player1.cardsinplay.append(player1.cards[i])
@@ -123,6 +134,7 @@ def equip():
             player1.bonus += player1.cardsinplay[i]["bonus"]
 
     return
+
 
 # play monster from your deck
 def playmonster(wandering):
@@ -136,19 +148,22 @@ def playmonster(wandering):
 
     elif wandering.get("level") >= (player1.level + player1.bonus):
         print("OH NO! The monster is to strong.")
-        resp = input("Do you want to run away").strip()
+        resp = input("Do you want to run away?: ").strip()
         if resp == "yes":
             diceroll = randint(1, 6)
             print(diceroll)
+            time.sleep(2)
             if diceroll == 5 or diceroll == 6:
                 print("You escaped!")
             else:
                 if wandering.get("bad stuff") == "death":
                     print("You died!")
+                    time.sleep(2)
                     player1.level = 1
                     player1.bonus = 0
                     player1.cardsinplay = []
                     trashdeck.insert(0, wandering)
+                    status()
                 elif wandering.get("bad stuff") == "lose a level":
 
                     player1.level -= 1
@@ -161,6 +176,7 @@ def playmonster(wandering):
         elif wandering.get("bad stuff") == "lose a level":
             player1.level -= 1
 
+
 # main
 def main():
 
@@ -170,13 +186,13 @@ def main():
     print("You open dungeon doors to find a random monster or item")
     print("If you can't beat the monster the bad stuff happens")
     print("When player reaches level 10 you won the game")
-
+    time.sleep(8)
     while True:
         status()
         equip()
         opendoor()
         if player1.level == 10:
-            print("You won the game.")
+            print("You won the game!")
             break
 
 
