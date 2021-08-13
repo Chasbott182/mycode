@@ -1,10 +1,16 @@
 #!/usr/bin/python3
 import random
+import sys
+
 import carddeck
 import player
 import json
 import time
 from random import randint
+from colorama import init
+init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
+from termcolor import cprint
+from pyfiglet import figlet_format
 
 
 
@@ -180,7 +186,8 @@ def playmonster(wandering):
 # main
 def main():
 
-    print("Welcome to Munchkin!\n")
+    cprint(figlet_format('Munchkin', font='starwars'),
+           'blue', 'on_white', attrs=['bold'])
     print("Game Rules:")
     print("You can equip treasure card for bonus points")
     print("You open dungeon doors to find a random monster or item")
