@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import random
 import sys
-
 import carddeck
 import player
 import json
